@@ -1,0 +1,17 @@
+.welcome {
+    width: max-content;
+}
+
+.welcome h2 {
+    display: flex;
+    margin: 0;
+    align-items: center;
+}
+
+.welcome img {
+    max-width: 100px;
+}
+
+.welcome .logo-text {
+    margin-top: 10px;
+}

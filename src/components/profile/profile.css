@@ -1,0 +1,11 @@
+.profile {
+    position: fixed;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%);
+    padding: 20px;
+    width: max-content;
+    background: gray;
+    border: 1px solid white;
+    border-radius: 10px;
+}
