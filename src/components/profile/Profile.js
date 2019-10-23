@@ -1,37 +1,74 @@
 import React from 'react'
 import './profile.css'
 
-function UserRow(user, users) {
-    let values = {};
-    console.log(user)
-    for (var name in user.user) {
-        if (typeof (user.user[name]) !== 'object') {
-            values[name] = user.user[name]
-            console.log(values)
+
+// function getInnerdata(inner) {
+//     let data = ''
+//     for (var name in inner) {
+//         console.log(inner[name])
+//         //values[name] = typeof(user.user[name]) !== 'object' ? user.user[name] : getUserData(user.user)
+//         if (typeof(inner[name]) !== 'object') {
+//             data += inner[name] + ' '
+//         } else {
+//             data += getInnerdata(inner[name]) + ' '
+//         }
+//     }
+//     return data
+// }
+
+// function getUserData(user) {
+//     for (var name in user.user) {
+//         console.log(user.user[name])
+//         //values[name] = typeof(user.user[name]) !== 'object' ? user.user[name] : getUserData(user.user)
+//         if (typeof(user.user[name]) !== 'object') {
+//             values[name] = user.user[name]
+//         } else {
+//             values[name] = getInnerdata(user.user[name])
+//         }
+//     }
+// }
+
+function UserRow(user) {
+    return Object.keys(user.user).map((value, index) => {
+        if(user.user[value] !== null) {
+            return <tr key={index}>
+                        <th>{value}: </th>
+                        <td> {user.user[value]}</td>
+                    </tr>
+        } else return null
+    })
+}
+
+class Profile extends React.Component{
+    constructor(props) {
+        super(props)
+        this.state = {
+            isLoad: false,
+            user: null
+        }
+        this.getUserData()
+    }
+    
+    getUserData = async () => {
+        const headers = new Headers();
+        headers.append('Authorization', 'Basic ' + window.btoa('Gaspar:159357'))
+        const user = await fetch(`http://localhost:8080/schoolDiary/users/${this.props.user.account.role.role.slice(5).toLowerCase()}/userinfo/${this.props.user.idUser}`, {headers:headers,})
+        if(user.ok) {
+            this.setState({user: await user.json(), isLoad: true})
         }
     }
 
-    return (
-        Object.keys(values).map((value, index)=> {
-            return <tr key={index}>
-                    <th>{value}</th>
-                    <td>{values[value]}</td>
-                </tr>
-        })   
-    )
-}
-
-let Profile = props => {
-    return (
-        <div className='profile'>
-            <i className="fas fa-times" onClick={() => {props.ofPopUp()}}></i>
-            <table>
-                <tbody>
-                    <UserRow user={props.user}/>
-                </tbody>
-            </table>
-        </div>
-    )
+    render() {
+        if(!this.state.isLoad) {return <div></div>}
+        return  <div className='profile'>
+                    <span className='out'><i className="fas fa-times" onClick={() => this.props.ofPopUp()}></i></span>
+                    <table>
+                        <tbody>
+                            <UserRow user={this.state.user}/>
+                        </tbody>
+                    </table>
+                </div>
+    }
 }
 
 export default Profile;

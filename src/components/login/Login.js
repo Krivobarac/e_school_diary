@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import './login.css';
-import NewCredentials from '../newCredentials/NewCredentials';
+import {Redirect} from "react-router-dom";
 
 class Login extends Component {
     constructor(props) {
@@ -13,6 +13,7 @@ class Login extends Component {
             isChecked: false,
             info: false,
             newCredentials: false,
+            role: '/'
         }
         document.documentElement.style.setProperty('--login-color', 'white')
         if(localStorage.getItem('username') && localStorage.getItem('password')) {
@@ -23,20 +24,20 @@ class Login extends Component {
         }
     }
      
-    logIn = async (e) => {
+    logIn = async e => {
         e && e.preventDefault();
         if(this.state.username !== '' && this.state.password !== '' ) {
             const headers = new Headers();
             headers.append('Authorization', 'Basic ' + window.btoa(this.state.username + ':' + this.state.password))
-            const user = await fetch('http://localhost:8080/schoolDiary/login', {headers: headers})
+            let user = await fetch('http://localhost:8080/schoolDiary/login', {headers: headers})
             if(user.ok) {
                 if(this.state.isChecked) {
                     localStorage.setItem("username", this.state.username);
                     localStorage.setItem("password", this.state.password);
                 }
+                user = await user.json()
                 document.documentElement.style.setProperty('--login-color', 'green')
-                this.setState({user: await user.json(), info: 'ACCESS'})
-                setTimeout(() => this.props.dataCallBack(this.state.username, this.state.password, this.state.user), 800)
+                setTimeout(() => this.setState({user, info: 'ACCESS', role: user.account.role.role.slice(5).toLowerCase()}), 800)
             } else {
                 document.documentElement.style.setProperty('--login-color', 'red');
                 this.setState({info: 'Username or Password isn\'t correct'})
@@ -48,7 +49,7 @@ class Login extends Component {
         }
     }
 
-    getCredentials = (e) => {
+    getCredentials = e => {
         let value = e.value.replace(/</g, "&lt;").replace(/>/g, "&gt;");
         this.setState({[e.name]: value})
     }
@@ -57,17 +58,17 @@ class Login extends Component {
         this.setState({isChecked: !this.state.isChecked})
     }
 
-    credentalsLoginToggle = () => {
-        this.setState({newCredentials: !this.state.newCredentials, info: false})
+    setredirect = () => {
+        this.setState({newCredentials: true, info: false})
         document.documentElement.style.setProperty('--login-color', 'white')
     }
 
     render() {
-        const {info, newCredentials, isLoged} = this.state
-        return (
-            !isLoged
-                ? !newCredentials
-                    ? <div className='login'>
+        const {info, newCredentials, isLoged, user, role} = this.state
+        if(user) return <Redirect to={{pathname:`/${role}`, state:{user: user}}}/>
+        if(newCredentials) return <Redirect to={{pathname:`/newCredentials`}}/>
+        return !isLoged
+                ? <div className='login'>
                         <form className='login-form' onSubmit={(e) => this.logIn(e)} method='post'>
                             <h3><i className="fas fa-unlock-alt"></i> Login Form</h3>
                             <input type='text' name='username' autoComplete='off' className='fas fa-user' placeholder='&#xf007; Username' onChange={(event) => this.getCredentials(event.target)} />
@@ -80,14 +81,11 @@ class Login extends Component {
                                 </p>
                                 <input type='submit' value='Log In' />
                             </div>
-                            <p className='forgot' onClick={this.credentalsLoginToggle}>Forgotten Credentials?</p>
+                            <p className='forgot' onClick={this.setredirect}>Forgotten Credentials?</p>
                         </form>
                         {info && (<span className='info'>{info}</span>)}
                     </div>
-                : <NewCredentials dataCallBack={this.credentalsLoginToggle}/>
-            : <div className="login-spinner"></div>
-        )
-        
+                : <div className="login-spinner"></div>
     }
 }
 

@@ -20,7 +20,7 @@
     padding: 10px 50px 20px;
     background: rgba(63, 61, 61, 0.5);
     border-radius: 8px;
-    margin: 30vh auto 20px;
+    margin: 20vh auto 20px;
 }
 
 .login-form .fa-unlock-alt {
@@ -88,7 +88,7 @@
     text-shadow: 2px 2px 50px black, -2px -2px 50px black;
 }
 
-.info {
+.login .info {
     padding: 5px;
     color: var(--login-color);
     letter-spacing: 1px;
@@ -123,7 +123,7 @@
     border: inherit;
     border-color: transparent;
     animation: spinner-spin .5s cubic-bezier(0.6, 0.2, 0, 0.8) infinite, spinner-fade .5s linear infinite;
-  }
+}
   
 .login-spinner:before {
     border-top-color: black;

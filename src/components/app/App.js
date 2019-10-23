@@ -2,8 +2,14 @@ import React from 'react';
 import './App.css';
 import Login from '../login/Login';
 import Welcome from '../welcome/Welcome';
-import UserMenu from '../userMenu/UserMenu'
+import SuperAdmin from '../pages/superAdmin/SuperAdmin'
+import Director from '../pages/director/Director'
+import Teacher from '../pages/teacher/Teacher'
+import Parrent from '../pages/parrent/Parrent'
 import Student from '../pages/student/Student'
+import NotFound from '../pages/notFound/NotFound'
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
+import NewCredentials from '../newCredentials/NewCredentials';
 
 class App extends React.Component {
   constructor(props) {
@@ -15,49 +21,26 @@ class App extends React.Component {
       data: null,
     }
   }
-  
-  handleBackUserCredential = (username, password, user) => {
-    this.setState({username, password, user});
-    //this.fetchData()
-  }
-
-  //  fetchData = async () => {
-  //   if(!this.state.user) {
-  //     const headers = new Headers();
-  //     headers.append('Authorization', 'Basic ' + window.btoa(this.state.username + ':' + this.state.password))
-  //     const data = await fetch('http://localhost:8080/schoolDiary/' + endPoint, {headers: headers})
-  //     if(data.ok) {
-  //       return await data.json()
-  //     } else {
-  //       return null;
-  //     }
-  //   }
-  // }
 
   render() {
-    const {user} = this.state;
-    return (
-      <div className="App">
-          <Welcome />
-        {
-          (!user)
-          ? (<Login dataCallBack={this.handleBackUserCredential} />)
-          : (
-            <div>
-              <UserMenu user={user} dataCallBack={this.handleBackUserCredential} />
-              
-              {user.account.role.role === 'ROLE_SUPER_ADMIN' && (<Student user={user} />)}
-              {user.account.role.role === 'ROLE_ADMIN' && (<Student user={user} />)}
-              {user.account.role.role === 'ROLE_TEACHER' && (<Student user={user} />)}
-              {user.account.role.role === 'ROLE_PARRENT' && (<Student user={user} />)}
-              {user.account.role.role === 'ROLE_STUDENT' && (<Student user={user} />)}
+    return <div className="App">
+              <Welcome />
+              <Router>
+                <Switch>
+                    <Route exact path='/' component={() => <Login />} />)
+                    <Route path='/newCredentials' component={() => <NewCredentials />} />)
+                    <Route path='/superadmin' component={(props) => <SuperAdmin {...props} />} />
+                    <Route path='/director' component={(props) => <Director {...props} />} />
+                    <Route path='/director' component={(props) => <Teacher {...props} />} />
+                    <Route path='/parrent' component={(props) => <Parrent {...props} />} />
+                    <Route path='/student' component={(props) => <Student {...props} />}  />
+                    <Route component={NotFound} />
+                </Switch>
+              </Router>
             </div>
-            
-          )
-        }
-      </div>
-    );
   }
+              
 }
+
 
 export default App;
