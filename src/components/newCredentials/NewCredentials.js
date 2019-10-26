@@ -28,7 +28,7 @@ export class NewCredentials extends Component {
             }
             this.setState({isLoading: true, info: ''})
             const headers = new Headers();
-            headers.append('Authorization', 'Basic ' + window.btoa('Gaspar:159357'))
+            headers.append('Authorization', 'Basic bWFpbkVudHJ5Om1haW5FbnRyeQ==')
             headers.append('Content-Type', 'application/json')
             await fetch(`http://localhost:8080/schoolDiary/users/${this.state.role}/forgottenCredential`, {
                 method: 'PUT',
@@ -55,43 +55,43 @@ export class NewCredentials extends Component {
     render() {
         const {info, isLoading, redirect} = this.state
         if(redirect) return <Redirect to='/'/>
-        return <div className='new-credentials'>
-                    <form className='credentials-form' onSubmit={(e) => this.getCredentials(e)} method='post'>
-                        <h3><i className="fas fa-key"></i>  New Credentials</h3>
-                        <input type='text' name='mail' autoComplete='off' className='fas fa-key' placeholder='&#xf0e0; Your Email' onChange={(e) => this.setState({mail: e.target.value})} />
-                        <p>Choose your role</p>
-                        <div className='radio'>
-                            <table>
-                                <tbody>
-                                    <tr>
-                                        <td>
-                                            <input type='radio' id='admin' name='rolle' value='admin' onChange={(e) => this.setState({role: e.target.value})} /><label htmlFor='admin'> Admin</label>
-                                        </td>
-                                        <td>
-                                            <input type='radio' id='director' name='rolle' value='director' onChange={(e) => this.setState({role: e.target.value})} /><label htmlFor='director'> Director</label>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <input type='radio' id='teacher' name='rolle' value='teacher' onChange={(e) => this.setState({role: e.target.value})} /><label htmlFor='teacher'> Teacher</label>
-                                        </td>
-                                        <td>
-                                            <input type='radio' id='parrent' name='rolle' value='parrent' onChange={(e) => this.setState({role: e.target.value})} /><label htmlFor='parrent'> Parrent</label>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        {
-                            !isLoading
-                            ? (<input type='submit' value='Send' />)
-                            : <div className="spinner"></div>
-                        }
-                        <p>If you are a student<br />you nead to ask teacher<br />for new credentiails</p>
-                        <p className='login' onClick={this.setRedirect}>Login</p>
-                    </form>
-                    {info && (<span className='info'>{info}</span>)}
-                </div>
+        return !isLoading
+                ? (<div className='new-credentials'>
+                        <form className='credentials-form' onSubmit={(e) => this.getCredentials(e)} method='post'>
+                            <h3><i className="fas fa-key"></i>  New Credentials</h3>
+                            <input type='text' name='mail' autoComplete='off' className='fas fa-key' placeholder='&#xf0e0; Your Email' onChange={(e) => this.setState({mail: e.target.value})} />
+                            <p>Choose your role</p>
+                            <div className='radio'>
+                                <table>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <input type='radio' id='admin' name='rolle' value='admin' onChange={(e) => this.setState({role: e.target.value})} /><label htmlFor='admin'> Admin</label>
+                                            </td>
+                                            <td>
+                                                <input type='radio' id='director' name='rolle' value='director' onChange={(e) => this.setState({role: e.target.value})} /><label htmlFor='director'> Director</label>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input type='radio' id='teacher' name='rolle' value='teacher' onChange={(e) => this.setState({role: e.target.value})} /><label htmlFor='teacher'> Teacher</label>
+                                            </td>
+                                            <td>
+                                                <input type='radio' id='parrent' name='rolle' value='parrent' onChange={(e) => this.setState({role: e.target.value})} /><label htmlFor='parrent'> Parrent</label>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <input type='submit' value='Send' />
+                            <p>If you are a student<br />you nead to ask teacher<br />for new credentiails</p>
+                            <p className='login' onClick={this.setRedirect}>Login</p>
+                        </form>
+                        {info && (<span className='info'>{info}</span>)}
+                    </div>)
+                
+                : (<div className="spinner"></div>)
+                
     }
 }
 

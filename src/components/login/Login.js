@@ -8,44 +8,54 @@ class Login extends Component {
         this.state = {
             isLoged: false,
             user: false,
-            username: '',
-            password: '',
+            username: false,
+            password: false,
             isChecked: false,
             info: false,
             newCredentials: false,
-            role: '/'
+            role: '/',
+            credentials: null
         }
         document.documentElement.style.setProperty('--login-color', 'white')
-        if(localStorage.getItem('username') && localStorage.getItem('password')) {
+        if(localStorage.getItem('credentials')) {
             this.state.isLoged = true
-            this.state.username = localStorage.getItem('username')
-            this.state.password = localStorage.getItem('password')
+            this.state.username = true
+            this.state.password = true
             this.logIn(false)
-        }
+        } 
     }
      
-    logIn = async e => {
+    logIn = e => {
         e && e.preventDefault();
-        if(this.state.username !== '' && this.state.password !== '' ) {
+        if(this.state.username && this.state.password) {
+            let credentials = (!this.state.isLoged) ? window.btoa(this.state.username + ':' + this.state.password) : localStorage.getItem('credentials')
             const headers = new Headers();
-            headers.append('Authorization', 'Basic ' + window.btoa(this.state.username + ':' + this.state.password))
-            let user = await fetch('http://localhost:8080/schoolDiary/login', {headers: headers})
-            if(user.ok) {
-                if(this.state.isChecked) {
-                    localStorage.setItem("username", this.state.username);
-                    localStorage.setItem("password", this.state.password);
+            headers.append('Authorization', 'Basic ' + credentials)
+             fetch('http://localhost:8080/schoolDiary/login', {headers: headers})
+            .then(async (user) => {
+                if(user.ok) {
+                    user =  await user.json()
+                    console.log(user)
+                    if(this.state.isChecked) {
+                        localStorage.removeItem("credentials");
+                        localStorage.setItem("credentials", credentials);
+                    }
+                    document.documentElement.style.setProperty('--login-color', 'green')
+                    this.setState({info: 'ACCESS'})
+                    setTimeout(() => this.setState({credentials, user, info: 'ACCESS', role: user.account.role.role.slice(5).toLowerCase()}), 800)
+                } else if(user.status === 401) {
+                    document.documentElement.style.setProperty('--login-color', 'red');
+                    this.setState({info: 'Username or Password isn\'t correct'})
                 }
-                user = await user.json()
-                document.documentElement.style.setProperty('--login-color', 'green')
-                setTimeout(() => this.setState({user, info: 'ACCESS', role: user.account.role.role.slice(5).toLowerCase()}), 800)
-            } else {
-                document.documentElement.style.setProperty('--login-color', 'red');
-                this.setState({info: 'Username or Password isn\'t correct'})
-            }
+            })
+            .catch((error) => {
+                this.setState({info: 'Server doesn\'t respond, try again later!'})
+            })
+            
         } else {
             document.documentElement.style.setProperty('--login-color', 'red');
-            (this.state.password === '' ) && this.setState({info: 'Password is required!'});
-            (this.state.username === '' ) && this.setState({info: 'Username is required!'});
+            (!this.state.password) && this.setState({info: 'Password is required!'});
+            (!this.state.username) && this.setState({info: 'Username is required!'});
         }
     }
 
@@ -64,8 +74,8 @@ class Login extends Component {
     }
 
     render() {
-        const {info, newCredentials, isLoged, user, role} = this.state
-        if(user) return <Redirect to={{pathname:`/${role}`, state:{user: user}}}/>
+        const {info, newCredentials, isLoged, user, role, credentials} = this.state
+        if(user) return <Redirect to={{pathname:`/${role}`, state:{user: user, credentials: credentials}}}/>
         if(newCredentials) return <Redirect to={{pathname:`/newCredentials`}}/>
         return !isLoged
                 ? <div className='login'>
@@ -85,7 +95,7 @@ class Login extends Component {
                         </form>
                         {info && (<span className='info'>{info}</span>)}
                     </div>
-                : <div className="login-spinner"></div>
+                : <div className="spinner"></div>
     }
 }
 

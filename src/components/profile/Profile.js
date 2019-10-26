@@ -43,7 +43,7 @@ class Profile extends React.Component{
     constructor(props) {
         super(props)
         this.state = {
-            isLoad: false,
+            isLoad: true,
             user: null
         }
         this.getUserData()
@@ -51,23 +51,24 @@ class Profile extends React.Component{
     
     getUserData = async () => {
         const headers = new Headers();
-        headers.append('Authorization', 'Basic ' + window.btoa('Gaspar:159357'))
+        headers.append('Authorization', 'Basic bWFpbkVudHJ5Om1haW5FbnRyeQ==')
         const user = await fetch(`http://localhost:8080/schoolDiary/users/${this.props.user.account.role.role.slice(5).toLowerCase()}/userinfo/${this.props.user.idUser}`, {headers:headers,})
         if(user.ok) {
-            this.setState({user: await user.json(), isLoad: true})
+            this.setState({user: await user.json(), isLoad: false})
         }
     }
 
     render() {
-        if(!this.state.isLoad) {return <div></div>}
-        return  <div className='profile'>
-                    <span className='out'><i className="fas fa-times" onClick={() => this.props.ofPopUp()}></i></span>
+        return  !this.state.isLoad
+                ? <div className='profile'>
+                    {/* <span className='out'><i className="fas fa-times" onClick={() => this.props.ofPopUp()}></i></span> */}
                     <table>
                         <tbody>
                             <UserRow user={this.state.user}/>
                         </tbody>
                     </table>
                 </div>
+                : <div className='spinner'></div>
     }
 }
 

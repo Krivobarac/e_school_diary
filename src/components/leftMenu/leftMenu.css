@@ -1,0 +1,37 @@
+.left-menu {
+    position: relative;
+    left: 0px;
+    padding: 15px;
+    width: max-content;
+    height: 40vh;
+    left: -115px;
+    background-image: linear-gradient( rgba(63, 61, 61, 0.5), transparent);
+    border-radius: 5px;
+}
+
+.left-menu::after {
+    content: "MENU";
+    width: 40px;
+    transform: rotate(-90deg);
+    position: absolute;
+    top: 30px;
+    right: -40px;
+}
+
+.left-menu:hover{
+    left: 0;
+}
+
+.left-menu h3 {
+    margin-top: 0;
+}
+
+.left-menu ul {
+    padding: 0;
+}
+
+.left-menu li {
+    cursor: pointer;
+    list-style: none;
+    margin-bottom: 10px;
+}

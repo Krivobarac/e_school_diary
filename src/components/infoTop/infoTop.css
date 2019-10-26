@@ -1,0 +1,9 @@
+.info-top {
+    width: max-content;
+}
+
+.info-top * {
+    display: inline-block;
+    padding-right: 10px;;
+    margin: 5px 0;
+}

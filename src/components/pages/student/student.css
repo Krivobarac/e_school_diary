@@ -1,0 +1,12 @@
+.student .content {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.student .left-menu-wrapper {
+    width: 10%;
+}

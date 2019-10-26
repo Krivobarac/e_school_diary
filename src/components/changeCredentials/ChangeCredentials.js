@@ -57,7 +57,7 @@ export default class ChangeCredentials extends Component {
     render() {
         const {info} = this.state;
         return <div className='change'>
-                    <span className='out'><i className="fas fa-times" onClick={() => this.props.ofPopUp()}></i></span>
+                    {/* <span className='out'><i className="fas fa-times" onClick={() => this.props.ofPopUp()}></i></span> */}
                     <form className='change-form' onSubmit={(e) => this.change(e)}>
                         <h3><i className="fas fa-key"></i> Change Credentials</h3>
                         <input type='text' name='newUsername' autoComplete='off' className='fas fa-user' placeholder='&#xf007; Username' onChange={(event) => this.setCredentials(event.target)} />

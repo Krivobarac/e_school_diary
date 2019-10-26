@@ -9,14 +9,13 @@ export class UserMenu extends Component {
         super(props)
         this.state = {
             profileList: ['Profile', 'Change Credentials', 'Log Out'],
+            components: {'Profile': Profile,
+                         'Change Credentials': ChangeCredentials
+                        },
             isProfileMenu: false,
-            option: null,
+            option: Profile,
             logout: false
         }
-    }
-
-    ofPopUp = () => {
-        this.setState({option: null})
     }
 
     profileMenuToggle = () => {
@@ -25,16 +24,18 @@ export class UserMenu extends Component {
 
     chooseOption = e => {
         if(e.textContent === this.state.profileList[2]) {
-            localStorage.removeItem("username")
-            localStorage.removeItem("password")
+            localStorage.removeItem("credentials")
             this.setState({logout: true})
         }
-        this.setState({option: e.textContent, isProfileMenu: !this.state.isProfileMenu})
+        this.setState({option: this.state.components[e.textContent], isProfileMenu: !this.state.isProfileMenu})
+        this.props.dataCallBack()
     }
+
 
     render() {
         const {user} = this.props
         const {isProfileMenu, option, profileList, logout} = this.state
+        const Option = option
         if(logout) {return <Redirect to='/' />}
         return <div className='menu-wraper'>
                     {isProfileMenu && (
@@ -51,8 +52,7 @@ export class UserMenu extends Component {
                     <div className='menu'>
                         <h3 className='profile-name' onClick={this.profileMenuToggle}><i className='fas fa-user'></i><span className='name'>{user.account.userName}</span></h3>
                     </div>
-                    {option === profileList[0] && (<Profile user={this.props.user} ofPopUp={this.ofPopUp} />)}
-                    {option === profileList[1] && (<ChangeCredentials user={this.props.user} ofPopUp={this.ofPopUp} />)}
+                   {!this.props.toggleUserAndLeftMenu && <Option user={this.props.user} />}
                 </div>
     }
 }

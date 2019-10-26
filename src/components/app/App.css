@@ -1,7 +1,3 @@
-.out {
-    margin-right: -30px;
-    display: block;
-    text-align: right;
-    font-size: 32px;
-    cursor: pointer;
+.app-route {
+    margin: 0 13px;
 }

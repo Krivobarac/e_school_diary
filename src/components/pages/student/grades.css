@@ -1,0 +1,38 @@
+.grades {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%);
+    border-radius: 10px;
+    background: rgba(63, 61, 61, 0.5);
+    padding: 0 10px 10px;
+}
+
+.grades h4 {
+    text-align: center;
+}
+
+.grades h4 span{
+    margin: 20px;
+}
+
+.grades table {
+    margin: auto;
+    text-align: center;
+}
+
+.grades tr {
+    
+}
+
+.grades th {
+    background: white;
+    color: black;
+    padding: 0 30px;
+}
+
+.grades td {
+    border-bottom: 1px solid white;
+    padding: 5px 30px;
+}
