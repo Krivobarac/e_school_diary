@@ -1,0 +1,61 @@
+.marks {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%);
+    border-radius: 10px;
+    background: rgba(63, 61, 61, 0.5);
+    padding: 0 10px 10px;
+}
+
+.marks h4 {
+    text-align: center;
+}
+
+.marks h4 span{
+    margin: 20px;
+}
+
+.marks table {
+    margin: auto;
+    text-align: center;
+}
+
+.marks table select {
+    margin-left: 15px;
+}
+
+.marks table select option:first-of-type {
+    display: none;
+}
+
+.marks th {
+    background: white;
+    color: black;
+    padding: 0 30px;
+}
+
+.marks td {
+    border-bottom: 1px solid white;
+    padding: 5px 30px;
+}
+
+.marks td span:not(:first-of-type) {
+    margin-left: 5px;
+}
+
+.marks td span:not(:last-of-type)::after {
+    content: ",";
+}
+
+.marks .buttons {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.marks button {
+    border-radius: 5px;
+    margin-left: 10px;
+    background: white;;
+}

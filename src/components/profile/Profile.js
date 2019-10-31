@@ -52,7 +52,7 @@ class Profile extends React.Component{
     getUserData = async () => {
         const headers = new Headers();
         headers.append('Authorization', 'Basic bWFpbkVudHJ5Om1haW5FbnRyeQ==')
-        const user = await fetch(`http://localhost:8080/schoolDiary/users/${this.props.user.account.role.role.slice(5).toLowerCase()}/userinfo/${this.props.user.idUser}`, {headers:headers,})
+        const user = await fetch(`http://localhost:8080/schoolDiary/users/${this.props.user.account.role.role.slice(5).toLowerCase()}/userinfo/${this.props.user.idUser}`, {headers:headers})
         if(user.ok) {
             this.setState({user: await user.json(), isLoad: false})
         }
@@ -61,7 +61,6 @@ class Profile extends React.Component{
     render() {
         return  !this.state.isLoad
                 ? <div className='profile'>
-                    {/* <span className='out'><i className="fas fa-times" onClick={() => this.props.ofPopUp()}></i></span> */}
                     <table>
                         <tbody>
                             <UserRow user={this.state.user}/>

@@ -21,9 +21,9 @@ function App() {
                     <Route path='/newCredentials' component={() => <NewCredentials />} />
                     <Route path='/superadmin' component={(props) => <SuperAdmin {...props} />} />
                     <Route path='/director' component={(props) => <Director {...props} />} />
-                    <Route path='/director' component={(props) => <Teacher {...props} />} />
+                    <Route path='/teacher' component={(props) => <Teacher {...props} />} />
                     <Route path='/parrent' component={(props) => <Parrent {...props} />} />
-                    <Route exact path='/student' component={(props) => <Student {...props} />} />
+                    <Route path='/student' component={(props) => <Student {...props} />} />
                     <Route component={NotFound} />
                 </Switch>
               </Router>

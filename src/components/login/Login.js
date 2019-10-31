@@ -35,7 +35,6 @@ class Login extends Component {
             .then(async (user) => {
                 if(user.ok) {
                     user =  await user.json()
-                    console.log(user)
                     if(this.state.isChecked) {
                         localStorage.removeItem("credentials");
                         localStorage.setItem("credentials", credentials);
@@ -95,7 +94,7 @@ class Login extends Component {
                         </form>
                         {info && (<span className='info'>{info}</span>)}
                     </div>
-                : <div className="spinner"></div>
+                : <div className='spinner-info'><div className='spinner'></div>{this.state.info}</div>
     }
 }
 

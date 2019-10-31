@@ -3,6 +3,7 @@ import './infoTop.css'
 
 export default class InfoTop extends Component {
     render() {
+        console.log(this.props.user)
         return (
             <div className='info-top'>
                 <h3>School:</h3>

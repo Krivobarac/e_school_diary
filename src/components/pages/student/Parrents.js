@@ -26,33 +26,33 @@ export default class Parrents extends Component {
 
     render() {
         return (
-            <div className='parrents'>
-                {this.state.result ? (
-                    <div>
-                        {
-                            this.state.parrents[0].student.parents.map((parrent, index) => {
-                                return (
-                                    <div className='parrent-info' key={index}>
-                                        <h4>Parrent {++index}:</h4>
-                                        <p>Name: {parrent.firstName}</p>
-                                        <p>Surname: {parrent.lastName}</p>
-                                        <p>Jmbg: {parrent.jmbg}</p>
-                                        <p>Address:
-                                            <span>{parrent.address.street.nameStreet}</span>
-                                            <span>{parrent.address.houseNumber.houseNumber}</span>,
-                                            <span>{parrent.address.city.nameCity}</span>,
-                                            <span>{parrent.address.city.borough.numberBorough}</span>
-                                            <span>{parrent.address.city.borough.nameBorough}</span>,
-                                            <span>{parrent.address.city.borough.country}</span>
-                                        </p>
-                                        <p>Gender: {parrent.gender}</p>
-                                    </div>
-                                )
-                            })
-                        }
-                    </div>
-                ) : <div className="spinner">{this.state.info}</div>}
-            </div>
+        <div className='parrents'>
+            {this.state.result ? (
+                <div>
+                    {
+                        this.state.parrents[0].student.parents.map((parrent, index) => {
+                            return (
+                                <div className='parrent-info' key={index}>
+                                    <h4>Parrent {++index}:</h4>
+                                    <p>Name: {parrent.firstName}</p>
+                                    <p>Surname: {parrent.lastName}</p>
+                                    <p>Jmbg: {parrent.jmbg}</p>
+                                    <p>Address:
+                                        <span>{parrent.address.street.nameStreet}</span>
+                                        <span>{parrent.address.houseNumber.houseNumber}</span>,
+                                        <span>{parrent.address.city.nameCity}</span>,
+                                        <span>{parrent.address.city.borough.numberBorough}</span>
+                                        <span>{parrent.address.city.borough.nameBorough}</span>,
+                                        <span>{parrent.address.city.borough.country}</span>
+                                    </p>
+                                    <p>Gender: {parrent.gender}</p>
+                                </div>
+                            )
+                        })
+                    }
+                </div>
+            ) : <div className="spinner">{this.state.info}</div>}
+        </div>
         )
     }
 }

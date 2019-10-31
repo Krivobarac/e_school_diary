@@ -12,8 +12,9 @@ export default class Student extends Component {
         super(props)
         this.state = {
             menuList: ['Grades', 'Parrents'],
-            components: {'Grades': Grades,
-                         'Parrents': Parrents
+            components: {
+                'Grades': Grades,
+                'Parrents': Parrents
                         },
             component: Grades,
             toggleUserAndLeftMenu: true
@@ -21,7 +22,7 @@ export default class Student extends Component {
     }
 
     toggleUserAndLeftMenu = () => {
-        this.setState({toggleUserAndLeftMenu: !this.state.toggleUserAndLeftMenu})
+        this.setState({toggleUserAndLeftMenu: false})
     }
 
     callBackComponentHolder = (opt) => {

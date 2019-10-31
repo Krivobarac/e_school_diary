@@ -12,7 +12,6 @@ export default class Grade extends Component {
         this.getGrades()
     }
     
-
     getGrades = async () => {
         const headers = new Headers();
         headers.append('Authorization', 'Basic ' + this.props.credentials)
@@ -27,8 +26,9 @@ export default class Grade extends Component {
 
     render() {
         return (
-            <div className='grades'>
-                {this.state.result ? (
+            <div>
+                {this.state.result
+                ? (<div className='grades'>
                     <div>
                         <h4>
                             <span>Class: {this.state.grades[0].student.classDepartments[0].schoolClass + '/' + this.state.grades[0].student.classDepartments[0].department}</span>
@@ -57,6 +57,7 @@ export default class Grade extends Component {
                             })}
                             </tbody>
                         </table>
+                    </div>
                     </div>
                 ) : <div className='spinner'>{this.state.info}</div>}
             </div>
