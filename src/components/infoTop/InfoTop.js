@@ -3,18 +3,18 @@ import './infoTop.css'
 
 export default class InfoTop extends Component {
     render() {
-        console.log(this.props.user)
+        const {user} = this.props
         return (
             <div className='info-top'>
                 <h3>School:</h3>
-                <h4>"{this.props.user.school.nameSchool}"</h4>
+                <h4>"{user.school.nameSchool}"</h4>
                     <p>{
-                        this.props.user.school.address.street.nameStreet
-                        + ' ' + this.props.user.school.address.houseNumber.houseNumber
-                        + ', ' + this.props.user.school.address.city.nameCity
-                        + ', ' + this.props.user.school.address.city.borough.numberBorough
-                        + ' ' + this.props.user.school.address.city.borough.nameBorough
-                        + ', ' + this.props.user.school.address.city.borough.country
+                        user.school.address.street.nameStreet
+                        + ' ' + user.school.address.houseNumber.houseNumber
+                        + ', ' + user.school.address.city.nameCity
+                        + ', ' + user.school.address.city.borough.numberBorough
+                        + ' ' + user.school.address.city.borough.nameBorough
+                        + ', ' + user.school.address.city.borough.country
                     }</p>
             </div>
         )

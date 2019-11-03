@@ -17,6 +17,7 @@ export default class Mark extends Component {
     }
 
     getGrades = async () => {
+        console.log(this.props.student.idUser)
         const headers = new Headers();
         headers.append('Authorization', 'Basic ' + this.props.credentials)
         const result = await fetch(`http://localhost:8080/schoolDiary/evaluation/student/${this.props.student.idUser}`, {headers:headers})
