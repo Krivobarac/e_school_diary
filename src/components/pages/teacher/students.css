@@ -15,9 +15,14 @@
 }
 
 .students th {
+    cursor: alias;
     background: white;
     color: black;
     padding: 0 30px;
+}
+
+.students th:hover {
+    background: grey;
 }
 
 .students table tr td:not(:last-of-type) {
@@ -28,5 +33,26 @@
 .students button {
     border-radius: 5px;
     margin-left: 10px;
-    background: white;;
+    background: white;
+}
+
+.students .search {
+    position: absolute;
+    top: -50px;
+    right: 0;
+    background: rgba(63, 61, 61, 0.5);
+    border: none;
+    border-radius: 10px;
+    color: white;
+    outline: none;
+    height: 30px;
+    padding-left: 10px;
+}
+
+.students .fa-search {
+    font-size: medium;
+}
+
+.students .fa-search::placeholder {
+    color: white;
 }

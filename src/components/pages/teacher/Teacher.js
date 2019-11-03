@@ -20,7 +20,7 @@ export default class Teacher extends Component {
                 'Student': Student,
                 'Mark': Mark
                         },
-            component: Students,
+            component: Schools,
             toggleUserAndLeftMenu: true,
             student: null
         }
@@ -45,7 +45,6 @@ export default class Teacher extends Component {
                     <LeftMenu menuList={this.state.menuList} user={this.props.history.location.state} dataCallBack={this.callBackComponentHolder} /> 
                     {this.state.toggleUserAndLeftMenu && <Option user={this.props.history.location.state.user} credentials={this.props.history.location.state.credentials} dataCallBack={this.callBackComponentHolder} student={this.state.student} />}
                 </div>
-                
             </div>
         )
     }

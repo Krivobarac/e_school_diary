@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import './mark.css'
-import { async } from 'q'
 
 export default class Mark extends Component {
     constructor(props) {
