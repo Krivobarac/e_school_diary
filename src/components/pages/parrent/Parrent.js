@@ -5,6 +5,7 @@ import UserMenu from '../../userMenu/UserMenu'
 import LeftMenu from '../../leftMenu/LeftMenu'
 import Grades from '../student/Grades'
 import InfoTop from '../../infoTop/InfoTop'
+import View from './View'
 
 export default class Parrent extends Component {
     constructor(props) {
@@ -15,7 +16,7 @@ export default class Parrent extends Component {
             toggleUserAndLeftMenu: true,
             component: null,
             child: null,
-            user: null
+            view: false
         }
         this.getChildren()
     }
@@ -28,33 +29,43 @@ export default class Parrent extends Component {
             let children = await result.json()
             let menuList = []
             for(let child of children) { menuList.push(child['firstName'])}
-            this.setState({children, menuList, component: children[0]['firstName'], user: children[0]})
-        } else {
-            alert(4)
+            this.setState({children, menuList, component: children[0]['firstName'], child: children[0]})
         }
     }
 
     toggleUserAndLeftMenu = () => {
-        this.setState({toggleUserAndLeftMenu: false})
+        this.setState({toggleUserAndLeftMenu: false, view: null})
     }
 
     callBackComponentHolder = async (opt) => {
-        this.setState({user: null})
-        let user = this.state.children.filter(child => {
+        this.setState({child: null})
+        if(opt === 'View') {
+            this.setState({view: View, toggleUserAndLeftMenu: true})
+            return
+        }
+        let child = this.state.children.filter(child => {
             return child.firstName === opt && child.firstName
         })
-        this.setState({component: opt, toggleUserAndLeftMenu: true, user: await user[0]})
+        this.setState({component: opt, toggleUserAndLeftMenu: true, child: await child[0], view: null})
     }
     
     render() {
-        const {user, toggleUserAndLeftMenu, } = this.state
-        if(!this.props.history.location.state) {return <Redirect to='/' />}
+        const {child, toggleUserAndLeftMenu} = this.state
+        let user, adminRole, component;
+        if(!this.props.history.location.state) {
+            return <Redirect to='/' />
+        } else {
+            component = this.props.history.location.state.component && this.props.history.location.state.component
+            user = this.props.history.location.state.admin ? this.props.history.location.state.admin : this.props.history.location.state.user
+            adminRole = this.props.history.location.state.admin && this.props.history.location.state.admin.account.role.role.slice(5).toLowerCase()
+        }
         return (
             <div className='student'>
-                {this.state.user && <InfoTop user={user} />}
-                <UserMenu user={this.props.history.location.state.user} dataCallBack={this.toggleUserAndLeftMenu} toggleUserAndLeftMenu={toggleUserAndLeftMenu}/>
-                <LeftMenu menuList={this.state.menuList} user={this.props.history.location.state} dataCallBack={this.callBackComponentHolder} /> 
-                {(toggleUserAndLeftMenu && user) && <Grades user={user} credentials={this.props.history.location.state.credentials}/>}
+                {this.state.child && <InfoTop user={child} />}
+                <UserMenu user={user} dataCallBack={this.toggleUserAndLeftMenu} toggleUserAndLeftMenu={toggleUserAndLeftMenu}/>
+                <LeftMenu menuList={this.state.menuList} user={user} component={component} dataCallBack={this.callBackComponentHolder} adminRole={adminRole} credentials={this.props.history.location.state.credentials} /> 
+                {(toggleUserAndLeftMenu && child) && <Grades user={child} credentials={this.props.history.location.state.credentials} />}
+                {this.state.view && <View user={this.props.history.location.state.user} credentials={this.props.history.location.state.credentials} />}
             </div>
         )
     }

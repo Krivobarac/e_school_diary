@@ -44,6 +44,7 @@ export default class Student extends Component {
                             <p>Surname: {parrent.lastName}</p>
                             <p>Jmbg: {parrent.jmbg}</p>
                             <p>Gender: {parrent.gender}</p>
+                            <p>email: {parrent.email}</p>
                             <p>Address:
                                 <span>{parrent.address.street.nameStreet}</span>
                                 <span>{parrent.address.houseNumber.houseNumber}</span>,

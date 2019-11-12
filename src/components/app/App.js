@@ -19,11 +19,11 @@ function App() {
                 <Switch>
                     <Route exact path='/' component={() => <Login />} />)
                     <Route path='/newCredentials' component={() => <NewCredentials />} />
-                    <Route path='/superadmin' component={(props) => <SuperAdmin {...props} />} />
-                    <Route path='/director' component={(props) => <Director {...props} />} />
-                    <Route path='/teacher' component={(props) => <Teacher {...props} />} />
-                    <Route path='/parrent' component={(props) => <Parrent {...props} />} />
-                    <Route path='/student' component={(props) => <Student {...props} />} />
+                    <Route exact path='/superadmin' component={(props) => <SuperAdmin {...props} />} />
+                    <Route exact path={['/director', '/admin']} component={(props) => <Director {...props} />} />
+                    <Route path={['/teacher', '/director/teacher', '/admin/teacher']} component={(props) => <Teacher {...props} />} />
+                    <Route path={['/parrent', '/director/parrent', '/admin/parrent']} component={(props) => <Parrent {...props} />} />
+                    <Route path={['/student', '/director/student', '/admin/student']} component={(props) => <Student {...props} />} />
                     <Route component={NotFound} />
                 </Switch>
               </Router>

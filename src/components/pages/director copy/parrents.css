@@ -1,0 +1,78 @@
+.director .parrents {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%);
+    border-radius: 10px;
+    background: rgba(63, 61, 61, 0.5);
+    padding: 20px;
+}
+
+.director .parrents .control {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.director .parrents button {
+    margin: 0;
+    height: 20px;
+    color: white;
+    background: rgba(63, 61, 61, 0.3);
+    border-radius: 5px;
+}
+
+.director .parrents button:focus {
+    outline: none;
+}
+
+.director .parrents h3 {
+    text-align: center;
+}
+
+.director .parrents tr {
+    cursor: pointer;
+}
+
+.director .parrents table {
+    margin: auto;
+    text-align: center;
+}
+
+.director .parrents th {
+    cursor: alias;
+    background: white;
+    color: black;
+    padding: 0 30px;
+}
+
+.director .parrents th:hover {
+    background: grey;
+}
+
+.director .parrents table tr td {
+    border-bottom: 1px solid white;
+    padding: 5px 30px;
+}
+
+.director .parrents .search {
+    position: absolute;
+    top: -50px;
+    right: 0;
+    background: rgba(63, 61, 61, 0.5);
+    border: none;
+    border-radius: 10px;
+    color: white;
+    outline: none;
+    height: 30px;
+    padding-left: 10px;
+}
+
+.director .parrents .fa-search {
+    font-size: medium;
+}
+
+.director .parrents .fa-search::placeholder {
+    color: white;
+}

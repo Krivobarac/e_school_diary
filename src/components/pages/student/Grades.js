@@ -19,6 +19,10 @@ export default class Grade extends Component {
         if(result.ok) {
             let grades = await result.json()
             this.setState({grades, result: true})
+        } else if (result.status === 403) {
+            this.setState({info: 'The student doesnt\'t belong your school'})
+        } else if (result.status === 405) {
+            this.setState({info: 'Student is not evaluated!'})
         } else {
             this.setState({info: 'Server doesn\'t respond, try agein later'})
         }
@@ -59,7 +63,7 @@ export default class Grade extends Component {
                         </table>
                     </div>
                     </div>
-                ) : <div className='spinner'>{this.state.info}</div>}
+                ) : (<div className='spinner-info'><div className='spinner'></div>{this.state.info}</div>)}
             </div>
         )
     }

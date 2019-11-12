@@ -5,7 +5,7 @@ export default class Parrents extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            parrents: [],
+            student: null,
             info: null,
             result: false
         }
@@ -15,10 +15,10 @@ export default class Parrents extends Component {
     getParrents = async () => {
         const headers = new Headers();
         headers.append('Authorization', 'Basic ' + this.props.credentials)
-        const result = await fetch(`http://localhost:8080/schoolDiary/evaluation/student/${this.props.user.idUser}`, {headers:headers,})
+        const result = await fetch(`http://localhost:8080/schoolDiary/users/student/${this.props.user.idUser}`, {headers:headers,})
         if(result.ok) {
-            let parrents = await result.json()
-            this.setState({parrents, result: true})
+            let student = await result.json()
+            this.setState({student, result: true})
         } else {
             this.setState({info: 'Server doesn\'t respond, try agein later'})
         }
@@ -30,7 +30,7 @@ export default class Parrents extends Component {
             {this.state.result ? (
                 <div>
                     {
-                        this.state.parrents[0].student.parents.map((parrent, index) => {
+                        this.state.student.parents.map((parrent, index) => {
                             return (
                                 <div className='parrent-info' key={index}>
                                     <h4>Parrent {++index}:</h4>
@@ -51,7 +51,7 @@ export default class Parrents extends Component {
                         })
                     }
                 </div>
-            ) : <div className="spinner">{this.state.info}</div>}
+            ) : (<div className='spinner-info'><div className='spinner'></div>{this.state.info}</div>)}
         </div>
         )
     }

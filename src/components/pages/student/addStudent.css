@@ -1,0 +1,64 @@
+:root {
+    --change-color: white;
+}
+
+.new-student {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%);
+}
+
+.new-student .student-info {
+    border-radius: 10px;
+    background: rgba(63, 61, 61, 0.5);
+    padding: 0 10px;
+}
+
+.new-student .student-info span {
+    margin: 0 5px;
+}
+
+.new-student .student-info p {
+    display: flex;
+    justify-content: space-between;
+}
+
+.new-student .student-info input {
+    background: rgba(31, 28, 28, 0.9);
+    border: none;
+    border-radius: 5px;
+    color: white;
+}
+
+.new-student .student-info input:focus {
+    outline: none;
+}
+
+.view-student .student-info input[type=text] {
+    height: 20px;
+    padding-left: 10px;
+}
+
+.new-student .student-info input[type=button] {
+    border: 1px solid var(--change-color);
+    padding: 5px 10px;
+    margin: 10px 0;
+    width: 100%;
+}
+
+.new-student .student-info input[type=button]:active {
+    background: rgba(63, 61, 61, 0.3);
+}
+
+.new-student .info {
+    margin-top: 10px;
+    padding: 5px;
+    color: var(--change-color);
+    letter-spacing: 1px;
+    background: rgba(63, 61, 61, 0.3);
+    text-shadow: 2px 2px 50px black, -2px -2px 50px black;
+    box-shadow: 2px 2px 10px black, 2px 2px 10px black;
+}

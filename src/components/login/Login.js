@@ -73,7 +73,8 @@ class Login extends Component {
     }
 
     render() {
-        const {info, newCredentials, isLoged, user, role, credentials} = this.state
+        const {info, newCredentials, isLoged, user, credentials} = this.state
+        let role = this.state.role
         if(user) return <Redirect to={{pathname:`/${role}`, state:{user: user, credentials: credentials}}}/>
         if(newCredentials) return <Redirect to={{pathname:`/newCredentials`}}/>
         return !isLoged

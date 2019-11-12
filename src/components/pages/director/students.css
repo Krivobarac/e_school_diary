@@ -1,0 +1,78 @@
+.director .students {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%);
+    border-radius: 10px;
+    background: rgba(63, 61, 61, 0.5);
+    padding: 20px;
+}
+
+.director .students .control {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.director .students button {
+    margin: 0;
+    height: 20px;
+    color: white;
+    background-color: rgba(63, 61, 61, 0.3);
+    border-radius: 5px;
+}
+
+.director .students button:focus {
+    outline: none;
+}
+
+.director .students h3 {
+    text-align: center;
+}
+
+.director .students table {
+    margin: auto;
+    text-align: center;
+}
+
+.director .students tr {
+    cursor: pointer;
+}
+
+.director .students th {
+    cursor: alias;
+    background: white;
+    color: black;
+    padding: 0 30px;
+}
+
+.director .students th:hover {
+    background: grey;
+}
+
+.director .students table tr td {
+    border-bottom: 1px solid white;
+    padding: 5px 30px;
+}
+
+.director .students .search {
+    position: absolute;
+    top: -50px;
+    right: 0;
+    background: rgba(63, 61, 61, 0.5);
+    border: none;
+    border-radius: 10px;
+    color: white;
+    outline: none;
+    height: 30px;
+    padding-left: 10px;
+}
+
+.director .students .fa-search {
+    font-size: medium;
+}
+
+.director .students .fa-search::placeholder {
+    color: white;
+}

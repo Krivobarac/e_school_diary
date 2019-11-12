@@ -1,0 +1,82 @@
+.director .teachers {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%);
+    border-radius: 10px;
+    background: rgba(63, 61, 61, 0.5);
+    padding: 20px;
+}
+
+.director .teachers .control {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.director .teachers button {
+    margin: 0;
+    height: 20px;
+    color: white;
+    background: rgba(63, 61, 61, 0.3);
+    border-radius: 5px;
+}
+
+.director .teachers button:focus {
+    outline: none;
+}
+
+.director .teachers h3 {
+    text-align: center;
+}
+
+.director .teachers table {
+    margin: auto;
+    text-align: center;
+}
+
+.director .teachers .delete {
+    z-index: 9999;
+}
+
+.director .teachers th {
+    cursor: alias;
+    background: white;
+    color: black;
+    padding: 0 30px;
+}
+
+.director .teachers tr {
+    cursor: pointer;
+}
+
+.director .teachers th:hover {
+    background: grey;
+}
+
+.director .teachers table tr td {
+    border-bottom: 1px solid white;
+    padding: 5px 30px;
+}
+
+.director .teachers .search {
+    position: absolute;
+    top: -50px;
+    right: 0;
+    background: rgba(63, 61, 61, 0.5);
+    border: none;
+    border-radius: 10px;
+    color: white;
+    outline: none;
+    height: 30px;
+    padding-left: 10px;
+}
+
+.director .teachers .fa-search {
+    font-size: medium;
+}
+
+.director .teachers .fa-search::placeholder {
+    color: white;
+}
