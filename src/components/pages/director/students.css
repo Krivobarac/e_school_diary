@@ -4,6 +4,8 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%);
+    width: max-content;
+    margin: 0 auto;
     border-radius: 10px;
     background: rgba(63, 61, 61, 0.5);
     padding: 20px;
@@ -19,7 +21,7 @@
     margin: 0;
     height: 20px;
     color: white;
-    background-color: rgba(63, 61, 61, 0.3);
+    background: rgba(63, 61, 61, 0.3);
     border-radius: 5px;
 }
 
@@ -36,8 +38,8 @@
     text-align: center;
 }
 
-.director .students tr {
-    cursor: pointer;
+.director .students .delete {
+    z-index: 9999;
 }
 
 .director .students th {
@@ -47,11 +49,15 @@
     padding: 0 30px;
 }
 
+.director .students tr {
+    cursor: pointer;
+}
+
 .director .students th:hover {
     background: grey;
 }
 
-.director .students table tr td {
+.director .students td {
     border-bottom: 1px solid white;
     padding: 5px 30px;
 }
@@ -75,4 +81,37 @@
 
 .director .students .fa-search::placeholder {
     color: white;
+}
+
+@media only screen and (max-width:700px) {
+    .director .students {
+        width: max-content;
+        border-radius: 5px;
+        padding: 15px;
+    }
+    
+    .director .students button {
+        font-size: 10px;
+    }
+    
+    .director .students th {
+        padding: 0 5px;
+        width: 50px;
+    }
+    
+    .director .students td {
+        padding: 5px 0;
+        width: 50px;
+    }
+    
+    .director .students .search {
+        border-radius: 5px;
+        height: 20px;
+        width: 120px;
+        padding-left: 5px;
+    }
+    
+    .director .students .fa-search::placeholder {
+        font-size: 10px;
+    }
 }

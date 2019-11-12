@@ -9,6 +9,7 @@ import Students from './Students'
 import Mark from './Mark'
 import Student from './Student'
 import View from './View'
+import './view.css'
 
 export default class Teacher extends Component {
     constructor(props) {

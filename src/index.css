@@ -16,7 +16,12 @@ p {
   font-family: 'RobotoBlack';
 }
 
+html {
+  width: 100%;
+}
+
 body {
+  width: 100%;
   position: relative;
   width: 100%;
   margin: 0;
@@ -134,5 +139,11 @@ a:active {
   }
   60% {
     opacity: .1;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  body {
+    font-size: 70%;
   }
 }

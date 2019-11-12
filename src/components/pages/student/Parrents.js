@@ -37,14 +37,12 @@ export default class Parrents extends Component {
                                     <p>Name: {parrent.firstName}</p>
                                     <p>Surname: {parrent.lastName}</p>
                                     <p>Jmbg: {parrent.jmbg}</p>
-                                    <p>Address:
+                                    <span>Address: </span>
                                         <span>{parrent.address.street.nameStreet}</span>
-                                        <span>{parrent.address.houseNumber.houseNumber}</span>,
-                                        <span>{parrent.address.city.nameCity}</span>,
-                                        <span>{parrent.address.city.borough.numberBorough}</span>
-                                        <span>{parrent.address.city.borough.nameBorough}</span>,
+                                        <span>{parrent.address.houseNumber.houseNumber} {parrent.address.city.nameCity},</span>
+                                        <span>{parrent.address.city.borough.numberBorough} {parrent.address.city.borough.nameBorough},</span>
                                         <span>{parrent.address.city.borough.country}</span>
-                                    </p>
+                                    
                                     <p>Gender: {parrent.gender}</p>
                                 </div>
                             )

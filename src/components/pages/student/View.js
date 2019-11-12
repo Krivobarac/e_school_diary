@@ -97,11 +97,9 @@ export default class View extends Component {
                         <p>Jmbg: {this.state.student.jmbg}</p>
                         <p>Gender: {this.state.student.gender}</p>
                         <p>Address:
-                            <span>{this.state.student.address.street.nameStreet}</span>
-                            <span>{this.state.student.address.houseNumber.houseNumber}</span>,
-                            <span>{this.state.student.address.city.nameCity}</span>,
-                            <span>{this.state.student.address.city.borough.numberBorough}</span>
-                            <span>{this.state.student.address.city.borough.nameBorough}</span>,
+                            <span>{this.state.student.address.street.nameStreet} {this.state.student.address.houseNumber.houseNumber}</span>
+                            <span>{this.state.student.address.city.nameCity}</span>
+                            <span>{this.state.student.address.city.borough.numberBorough} {this.state.student.address.city.borough.nameBorough}</span>
                             <span>{this.state.student.address.city.borough.country}</span>
                         </p>
                         <input type='button' onClick={() => this.setState({update: true})} value='Update' />

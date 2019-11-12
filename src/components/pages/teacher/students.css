@@ -1,4 +1,5 @@
-.students {
+.teacher .students {
+    width: max-content;
     display: block;
     position: absolute;
     top: 50%;
@@ -9,34 +10,34 @@
     padding: 20px;
 }
 
-.students table {
+.teacher .students table {
     margin: auto;
     text-align: center;
 }
 
-.students th {
+.teacher .students th {
     cursor: alias;
     background: white;
     color: black;
     padding: 0 30px;
 }
 
-.students th:hover {
+.teacher .students th:hover {
     background: grey;
 }
 
-.students table tr td:not(:last-of-type) {
+.teacher .students table tr td:not(:last-of-type) {
     border-bottom: 1px solid white;
     padding: 5px 30px;
 }
 
-.students button {
+.teacher .students button {
     border-radius: 5px;
     margin-left: 10px;
     background: white;
 }
 
-.students .search {
+.teacher .students .search {
     position: absolute;
     top: -50px;
     right: 0;
@@ -49,10 +50,71 @@
     padding-left: 10px;
 }
 
-.students .fa-search {
+.teacher .students .fa-search {
     font-size: medium;
 }
 
-.students .fa-search::placeholder {
+.teacher .students .fa-search::placeholder {
     color: white;
+}
+
+@media only screen and (max-width: 700px) {
+    .teacher .students {
+        top: 60%;
+        width: max-content;
+        border-radius: 5px;
+        padding: 5px;
+    }
+
+    .teacher .students table {
+        width: 90vw;
+        margin: 0;
+    }
+    
+    .teacher .students button {
+        display: block;
+        font-size: 10px;
+        margin: 0;
+    }
+    
+    .teacher .students button:last-of-type {
+        margin-top: 5px;
+    }
+    
+    .teacher .students th {
+        width: 50px;
+        padding: 0;
+    }
+    
+    .teacher .students table tr td:not(:last-of-type) {
+        padding: 0;
+    }
+
+    .teacher .students table tr td:last-of-type {
+        display: contents;
+        width: 20px;
+        margin: 0;
+        padding: 0;
+    }
+    
+    .teacher .students .search {
+        border-radius: 5px;
+        height: 20px;
+        width: 120px;
+        padding-left: 5px;
+    }
+    
+    .teacher .students .fa-search::placeholder {
+        font-size: 10px;
+    }
+}
+
+@media only screen and (orientation: landscape) {
+    .teacher .students table {
+        width: 100%;
+    }
+
+    .teacher .students button {
+        margin-left: 10px;
+    }
 }

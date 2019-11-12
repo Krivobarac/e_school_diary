@@ -8,6 +8,7 @@ import Parrents from './Parrents'
 import './student.css'
 import View from './View'
 import AddParrent from './AddParrent'
+import './view.css'
 
 export default class Student extends Component {
     constructor(props) {

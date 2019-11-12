@@ -69,3 +69,9 @@
     text-shadow: 2px 2px 50px black, -2px -2px 50px black;
     box-shadow: 2px 2px 10px black, 2px 2px 10px black;
 }
+
+@media only screen and (max-width: 700px) {
+    .view-parrents .parrent-info span {
+        display: block;
+    }
+}

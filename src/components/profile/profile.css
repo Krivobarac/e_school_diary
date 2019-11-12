@@ -23,6 +23,12 @@
 
 @media only screen and (max-width: 620px) {
     .profile {
-        top: 35%;
+        top: 25%;
     }
 }
+
+@media only screen and (orientation: landscape) {
+    .profile {
+        top: 50%;
+    }
+  }

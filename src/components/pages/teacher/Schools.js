@@ -22,12 +22,10 @@ export default class School extends Component {
                                     <h4>School {++index}:</h4>
                                     <p>School Name: {school.nameSchool}</p>
                                     <p>School Number: {school.numberSchool}</p>
-                                    <p>Address:
-                                        <span>{school.address.street.nameStreet}</span>
-                                        <span>{school.address.houseNumber.houseNumber}</span>,
-                                        <span>{school.address.city.nameCity}</span>,
-                                        <span>{school.address.city.borough.numberBorough}</span>
-                                        <span>{school.address.city.borough.nameBorough}</span>,
+                                    <p><span>Address: </span>
+                                        <span>{school.address.street.nameStreet} {school.address.houseNumber.houseNumber},</span>
+                                        <span>{school.address.city.nameCity}</span>
+                                        <span>{school.address.city.borough.numberBorough} {school.address.city.borough.nameBorough},</span>
                                         <span>{school.address.city.borough.country}</span>
                                     </p>
                                 </div>

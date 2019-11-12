@@ -11,6 +11,7 @@ import AddStudent from '../student/AddStudent'
 import View from './View'
 import OtherView from './OtherView'
 import New from './New'
+import './director.css'
 
 export default class Director extends Component {
     constructor(props) {
@@ -59,10 +60,8 @@ export default class Director extends Component {
             <div className='director'>
                <UserMenu user={this.props.history.location.state.user} dataCallBack={this.toggleUserAndLeftMenu} toggleUserAndLeftMenu={this.state.toggleUserAndLeftMenu}/>
                 <InfoTop user={this.props.history.location.state.user} />
-                <div style={{display: 'flex', flexDirection: 'row'}}>
-                    <LeftMenu menuList={this.state.menuList} user={this.props.history.location.state.user} dataCallBack={this.callBackComponentHolder} credentials={this.props.history.location.state.credentials} /> 
-                    {this.state.toggleUserAndLeftMenu && <Option user={this.props.history.location.state.user} credentials={this.props.history.location.state.credentials} dataCallBack={this.callBackComponentHolder} component={this.state.option} student={this.state.student} />}
-                </div>
+                <LeftMenu menuList={this.state.menuList} user={this.props.history.location.state.user} dataCallBack={this.callBackComponentHolder} credentials={this.props.history.location.state.credentials} /> 
+                {this.state.toggleUserAndLeftMenu && <Option user={this.props.history.location.state.user} credentials={this.props.history.location.state.credentials} dataCallBack={this.callBackComponentHolder} component={this.state.option} student={this.state.student} />}
             </div>
         )
     }

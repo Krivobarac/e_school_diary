@@ -28,7 +28,7 @@
 }
 
 .menu .name {
-    margin-right: 30px;
+    margin-right: 10px;
     line-height: 1.6;
 }
 
@@ -78,21 +78,18 @@
     color: grey;
 }
 
-@media only screen and (max-width: 620px) {
+@media only screen and (max-width: 880px) {
     .menu-list {
-        position: absolute;
-        top: 50px;
-        right: 0;
-        width: max-content;
+        background: rgba(63, 61, 61, 0.9);
     }
-    
+
     .menu-list::after {
-        border-left: 1px solid white;
-        border-top: 1px solid white;
-        border-right: none;
-        top: -12px;
-        right: 23px;
-        transform: rotate(45deg);
+        filter: brightness(240%) contrast(69%);
     }
-    
-  }
+}
+
+@media only screen and (max-width: 600px) {
+    .menu-wraper {
+        top: 15px;
+    }
+}

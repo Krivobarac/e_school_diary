@@ -106,7 +106,7 @@ export default class New extends Component {
         return (
             <div className='view-user'>
                 <h3>Add New</h3>
-                <div className='user-info'>
+                <div >
                     <div className='user-info user-update'>
                         <div className='choose'>
                             <p>Director: <input type='radio' name='' onChange={() => this.setState({role: 'director'})} /></p>

@@ -4,6 +4,8 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%);
+    width: max-content;
+    margin: 0 auto;
     border-radius: 10px;
     background: rgba(63, 61, 61, 0.5);
     padding: 20px;
@@ -79,4 +81,34 @@
 
 .director .teachers .fa-search::placeholder {
     color: white;
+}
+
+@media only screen and (max-width: 700px) {
+    .director .teachers {
+        border-radius: 5px;
+        padding: 15px;
+    }
+    
+    .director .teachers button {
+        font-size: 10px;
+    }
+    
+    .director .teachers th {
+        padding: 0 10px;
+    }
+    
+    .director .teachers table tr td {
+        padding: 5px 10px;
+    }
+    
+    .director .teachers .search {
+        border-radius: 5px;
+        height: 20px;
+        width: 120px;
+        padding-left: 5px;
+    }
+    
+    .director .teachers .fa-search::placeholder {
+        font-size: 10px;
+    }
 }

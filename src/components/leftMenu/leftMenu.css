@@ -1,12 +1,14 @@
 .left-menu {
+    display: inline-block;
     position: relative;
     left: 0px;
     padding: 15px;
     width: max-content;
     height: 40vh;
-    left: -115px;
+    left: -100px;
     background-image: linear-gradient( rgba(63, 61, 61, 0.5), transparent);
     border-radius: 5px;
+    z-index: 9999;
 }
 
 .left-menu::after {
@@ -14,7 +16,7 @@
     width: 40px;
     transform: rotate(-90deg);
     position: absolute;
-    top: 30px;
+    top: 15px;
     right: -40px;
 }
 
@@ -35,3 +37,12 @@
     list-style: none;
     margin-bottom: 10px;
 }
+
+@media only screen and (max-width: 600px) {
+    .left-menu {
+        left: -80px;
+        background-image: none;
+        background-color: rgba(44, 43, 43, 0.9);
+        height: max-content;
+    }
+  }

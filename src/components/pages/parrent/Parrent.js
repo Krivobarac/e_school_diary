@@ -6,6 +6,7 @@ import LeftMenu from '../../leftMenu/LeftMenu'
 import Grades from '../student/Grades'
 import InfoTop from '../../infoTop/InfoTop'
 import View from './View'
+import './view.css'
 
 export default class Parrent extends Component {
     constructor(props) {
